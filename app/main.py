@@ -12,7 +12,7 @@ app = FastAPI()
 MYSQL_HOST = os.getenv('MYSQL_HOST', 'mysql')  
 MYSQL_USER = os.getenv('MYSQL_USER', 'user')
 MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD', 'password') 
-MYSQL_DB = os.getenv('MYSQL_DB', 'video_games')
+MYSQL_DB = os.getenv('MYSQL_DB', 'tienda_ropa')
 
 #Conexion a la base de datos
 engine = create_engine(f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}/{MYSQL_DB}')
