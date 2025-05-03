@@ -1,3 +1,4 @@
+use tienda_ropa;
 INSERT INTO categorias (nombre_categoria) VALUES
 ('Blusas'), ('Pantalones'), ('Accesorios'), ('Zapatos'),
 ('Faldas'), ('Vestidos'), ('Bolsos'), ('Lentes de sol'),
