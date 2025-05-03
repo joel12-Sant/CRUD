@@ -1,7 +1,24 @@
+-- Elimina y crea nuevamente la base de datos
 DROP DATABASE IF EXISTS tienda_ropa;
 CREATE DATABASE tienda_ropa;
 USE tienda_ropa;
 
+-- Primero creamos las tablas que no tienen dependencias
+DROP TABLE IF EXISTS categorias;
+CREATE TABLE categorias (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_categoria VARCHAR(100) NOT NULL
+);
+
+DROP TABLE IF EXISTS proveedores;
+CREATE TABLE proveedores (
+    id_proveedor INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    contacto VARCHAR(100),
+    telefono VARCHAR(20)
+);
+
+DROP TABLE IF EXISTS clientes;
 CREATE TABLE clientes (
     id_cliente INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -10,20 +27,8 @@ CREATE TABLE clientes (
     direccion VARCHAR(255)
 );
 
-INSERT INTO clientes (nombre) VALUES ('Cliente mostrador');
-
-CREATE TABLE proveedores (
-    id_proveedor INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    contacto VARCHAR(100),
-    telefono VARCHAR(20)
-);
-
-CREATE TABLE categorias (
-    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_categoria VARCHAR(100) NOT NULL
-);
-
+-- Luego las tablas que dependen de las anteriores
+DROP TABLE IF EXISTS productos;
 CREATE TABLE productos (
     id_producto INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -36,6 +41,7 @@ CREATE TABLE productos (
     FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor)
 );
 
+DROP TABLE IF EXISTS ventas;
 CREATE TABLE ventas (
     id_venta INT AUTO_INCREMENT PRIMARY KEY,
     fecha_venta DATE NOT NULL,
@@ -43,6 +49,7 @@ CREATE TABLE ventas (
     FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
 );
 
+DROP TABLE IF EXISTS detalle_venta;
 CREATE TABLE detalle_venta (
     id_detalle INT AUTO_INCREMENT PRIMARY KEY,
     id_venta INT NOT NULL,
