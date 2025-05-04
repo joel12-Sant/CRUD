@@ -27,7 +27,6 @@ CREATE TABLE clientes (
     direccion VARCHAR(255)
 );
 
--- Luego las tablas que dependen de las anteriores
 DROP TABLE IF EXISTS productos;
 CREATE TABLE productos (
     id_producto INT AUTO_INCREMENT PRIMARY KEY,
